@@ -1,20 +1,23 @@
+from typing import List
+
+
 class Graph:
-    def __init__(self, vertices):
+    def __init__(self, vertices: int):
         self.vertices = vertices
         # Adjacency list
         self.adjacency_list = [[] for _ in range(vertices)]
 
-    def add_edge(self, source, destination):
+    def add_edge(self, source: int, destination: int):
         self.adjacency_list[source].append(destination)
         # For an undirected graph
         self.adjacency_list[destination].append(source)
 
-    def dfs(self, starting_vertex):
+    def dfs(self, starting_vertex: int):
         visited = [False] * self.vertices
         print("DFS Traversal: ", end="")
         self.dfs_recursive(starting_vertex, visited)
 
-    def dfs_recursive(self, current_vertex, visited):
+    def dfs_recursive(self, current_vertex: int, visited: List[bool]):
         visited[current_vertex] = True
         print(current_vertex, end=" ")
 
@@ -46,8 +49,7 @@ if __name__ == "__main__":
 # V = number of vertices, E = number of edges
 # Time complexity: O(V + E)
 # __init__(): O(V)
-# dfs(): O(E)
+# dfs(): O(V + E)
 # Space complexity: O(V)
 # __init__(): O(V)
 # dfs(): O(V)
-

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 #include <vector>
 
 using namespace std;
@@ -8,17 +9,6 @@ class Graph {
     int vertices;
     vector<vector<int>> adjacencyList;
 
-    void dfsRecursive(int curr, vector<bool> &visited) {
-        visited[curr] = true;
-        cout << curr << " ";
-
-        for (auto neighbor : adjacencyList[curr]) {
-            if (!visited[neighbor]) {
-                dfsRecursive(neighbor, visited);
-            }
-        }
-    }
-
   public:
     Graph(int vertices) : vertices(vertices), adjacencyList(vertices) {}
 
@@ -27,17 +17,34 @@ class Graph {
         adjacencyList[destination].push_back(source);
     }
 
-    void dfs(int startingVertex) {
+    void bfs(int startingVertex) {
         vector<bool> visited(vertices, false);
-        cout << "DFS Traversal: ";
-        dfsRecursive(startingVertex, visited);
+        queue<int> myQueue;
+
+        visited[startingVertex] = true;
+        myQueue.push(startingVertex);
+
+        while (!myQueue.empty()) {
+            int curr = myQueue.front();
+            myQueue.pop();
+
+            visited[curr] = true;
+            cout << curr << " ";
+
+            for (auto neighbor : adjacencyList[curr]) {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    myQueue.push(neighbor);
+                }
+            }
+        }
     }
 };
 
 // V = number of vertices, E = number of edges
 // Time complexity: O(V + E)
 // constructor(): O(V)
-// dfs(): O(V + E)
+// bfs(): O(V + E)
 // Space complexity: O(V)
 // constructor(): O(V)
-// dfs(): O(V)
+// bfs(): O(V)

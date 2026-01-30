@@ -21,15 +21,14 @@ class Graph {
         vector<bool> visited(vertices, false);
         stack<int> myStack;
         myStack.push(startingVertex);
+        visited[startingVertex] = true;
 
         while (!myStack.empty()) {
             int curr = myStack.top();
             myStack.pop();
 
-            if (!visited[curr]) {
-                cout << curr << " ";
-                visited[curr] = true;
-            }
+            cout << curr << " ";
+            visited[curr] = true;
 
             for (auto neighbor : adjacencyList[curr]) {
                 if (!visited[neighbor]) {
@@ -43,7 +42,7 @@ class Graph {
 // V = number of vertices, E = number of edges
 // Time complexity: O(V + E)
 // constructor(): O(V)
-// dfs(): O(E)
+// dfs(): O(V + E)
 // Space complexity: O(V)
 // constructor(): O(V)
 // dfs(): O(V)
