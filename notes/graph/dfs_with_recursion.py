@@ -44,9 +44,10 @@ if __name__ == "__main__":
 
 
 # V = number of vertices, E = number of edges
-# Time complexity:
+# Time complexity: O(V + E)
 # __init__(): O(V)
-# dfs(): O(V + 2 * E) +==> O(V + E)
-# Space complexity:
+# dfs(): O(E)
+# Space complexity: O(V)
 # __init__(): O(V)
 # dfs(): O(V)
+

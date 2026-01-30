@@ -29,9 +29,9 @@ class Graph:
                     stack.append(neighbor)
 
 # V = number of vertices, E = number of edges
-# Time complexity:
+# Time complexity: O(V + E)
 # __init__(): O(V)
-# dfs(): O(2 * E) +==> O(E)
-# Space complexity:
-# __init__(): O(V + E)
+# dfs(): O(E)
+# Space complexity: O(V)
+# __init__(): O(V)
 # dfs(): O(V)

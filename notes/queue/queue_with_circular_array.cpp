@@ -3,28 +3,21 @@
 
 using namespace std;
 
-class Solution
-{
-private:
+class Solution {
+  private:
     int capacity;
     int front, back;
     vector<int> queue;
 
-public:
-    Solution(int capacity) : capacity(capacity), front(-1), back(-1), queue(capacity) {};
+  public:
+    Solution(int capacity)
+        : capacity(capacity), front(-1), back(-1), queue(capacity) {};
 
-    bool isEmpty(void)
-    {
-        return front == -1;
-    }
+    bool isEmpty(void) { return front == -1; }
 
-    bool isFull(void)
-    {
-        return ((back + 1) % capacity == front);
-    }
+    bool isFull(void) { return ((back + 1) % capacity == front); }
 
-    int getSize(void)
-    {
+    int getSize(void) {
         if (isEmpty())
             return 0;
         else if (front <= back)
@@ -33,8 +26,7 @@ public:
     }
 
     // 0 = success, 1 = empty
-    int getFront(int &value)
-    {
+    int getFront(int &value) {
         if (isEmpty())
             return 1;
         value = queue.at(front);
@@ -42,8 +34,7 @@ public:
     }
 
     // 0 = success, 1 = empty
-    int getBack(int &value)
-    {
+    int getBack(int &value) {
         if (isEmpty())
             return 1;
         value = queue.at(back);
@@ -51,8 +42,7 @@ public:
     }
 
     // 0 = success, 1 = full
-    int enque(int element)
-    {
+    int enque(int element) {
         if (isFull())
             return 1;
 
@@ -65,8 +55,7 @@ public:
     }
 
     // 0 = success, 1 = empty
-    int deque()
-    {
+    int deque() {
         if (isEmpty())
             return 1;
 
